@@ -27,17 +27,16 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
           ? "glass-card border-b border-border/50"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="container px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <a href="/" className="text-2xl font-bold font-display gradient-text">
-            BVA
+          <a href="/" className="flex items-center">
+            <img src="/bva%20blanc.png" alt="BVA" className="h-8 sm:h-9" />
           </a>
 
           {/* Desktop Navigation */}
@@ -56,9 +55,11 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button variant="hero" size="default">
-              Get Started
-            </Button>
+            <a href="#book-schedule">
+              <Button variant="heroOutline" size="default">
+                Get Started
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -95,9 +96,11 @@ const Navbar = () => {
                   {item.label}
                 </a>
               ))}
-              <Button variant="hero" size="lg" className="mt-4">
-                Get Started
-              </Button>
+              <a href="#book-schedule" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button variant="heroOutline" size="lg" className="mt-4 w-full">
+                  Get Started
+                </Button>
+              </a>
             </nav>
           </div>
         </motion.div>

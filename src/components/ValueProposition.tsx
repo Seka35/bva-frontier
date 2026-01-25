@@ -1,5 +1,9 @@
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Check, Zap, Target, TrendingUp, Users } from "lucide-react";
+import { ParticleCard, GlobalSpotlight } from "@/components/MagicBento";
+import ScrollFloat from "@/components/ScrollFloat";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const features = [
   {
@@ -25,6 +29,9 @@ const features = [
 ];
 
 const ValueProposition = () => {
+  const gridRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+
   return (
     <section className="relative py-24 sm:py-32 overflow-hidden">
       {/* Background accent */}
@@ -39,10 +46,12 @@ const ValueProposition = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display mb-6">
-              Why Businesses{" "}
-              <span className="gradient-text">Choose BVA</span>
-            </h2>
+            <ScrollFloat
+              containerClassName="text-3xl sm:text-4xl md:text-5xl font-bold font-display mb-6 text-left"
+              textClassName=""
+            >
+              Why Businesses Choose BVA
+            </ScrollFloat>
             <p className="text-lg text-muted-foreground mb-8">
               We combine deep technical expertise with a genuine understanding of 
               business challenges. Our team doesn't just write code—we architect 
@@ -74,7 +83,17 @@ const ValueProposition = () => {
           </motion.div>
 
           {/* Right content - Feature cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div
+            ref={gridRef}
+            className="bento-section grid grid-cols-1 sm:grid-cols-2 gap-4"
+          >
+            <GlobalSpotlight
+              gridRef={gridRef}
+              disableAnimations={isMobile}
+              enabled
+              spotlightRadius={400}
+              glowColor="132, 0, 255"
+            />
             {features.map((feature, index) => (
               <motion.div
                 key={index}
@@ -82,13 +101,23 @@ const ValueProposition = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="glass-card rounded-xl p-6 hover:border-primary/30 transition-all duration-300"
               >
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center mb-4">
-                  <feature.icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="font-semibold font-display mb-2">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground">{feature.description}</p>
+                <ParticleCard
+                  className="glass-card rounded-xl p-6 hover:border-primary/30 transition-all duration-300"
+                  disableAnimations={isMobile}
+                  particleCount={12}
+                  glowColor="132, 0, 255"
+                  enableTilt={false}
+                  clickEffect
+                  enableMagnetism={false}
+                  enableBorderGlow
+                >
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center mb-4">
+                    <feature.icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <h3 className="font-semibold font-display mb-2">{feature.title}</h3>
+                  <p className="text-sm text-muted-foreground">{feature.description}</p>
+                </ParticleCard>
               </motion.div>
             ))}
           </div>

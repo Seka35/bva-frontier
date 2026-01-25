@@ -1,0 +1,21 @@
+.scroll-float {
+  overflow-x: visible;
+  overflow-y: hidden;
+}
+
+.scroll-float-text {
+  display: inline-block;
+  font-size: inherit;
+  font-weight: inherit;
+  text-align: inherit;
+  line-height: 1.5;
+}
+
+.word {
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.char {
+  display: inline-block;
+}

@@ -1,5 +1,9 @@
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Brain, Cog, Code, Smartphone, Cloud, Shield } from "lucide-react";
+import { ParticleCard, GlobalSpotlight } from "@/components/MagicBento";
+import ScrollFloat from "@/components/ScrollFloat";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const services = [
   {
@@ -41,6 +45,9 @@ const services = [
 ];
 
 const ServicesSection = () => {
+  const gridRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+
   return (
     <section className="relative py-24 sm:py-32">
       <div className="container px-4 sm:px-6 lg:px-8">
@@ -52,10 +59,12 @@ const ServicesSection = () => {
           viewport={{ once: true }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display mb-6">
-            Solutions That{" "}
-            <span className="gradient-text">Drive Innovation</span>
-          </h2>
+          <ScrollFloat
+            containerClassName="text-3xl sm:text-4xl md:text-5xl font-bold font-display mb-6 text-center"
+            textClassName=""
+          >
+            Solutions That Drive Innovation
+          </ScrollFloat>
           <p className="text-lg text-muted-foreground">
             From AI-powered automation to custom development, we deliver
             comprehensive digital solutions that transform how you do business.
@@ -63,7 +72,17 @@ const ServicesSection = () => {
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          ref={gridRef}
+          className="bento-section grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          <GlobalSpotlight
+            gridRef={gridRef}
+            disableAnimations={isMobile}
+            enabled
+            spotlightRadius={400}
+            glowColor="132, 0, 255"
+          />
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -73,7 +92,16 @@ const ServicesSection = () => {
               viewport={{ once: true }}
               className="group relative"
             >
-              <div className="glass-card rounded-2xl p-8 h-full transition-all duration-300 hover:border-primary/30 hover:shadow-[0_0_40px_-10px_hsl(var(--primary)/0.3)]">
+              <ParticleCard
+                className="glass-card rounded-2xl p-8 h-full transition-all duration-300 hover:border-primary/30 hover:shadow-[0_0_40px_-10px_hsl(var(--primary)/0.3)]"
+                disableAnimations={isMobile}
+                particleCount={12}
+                glowColor="132, 0, 255"
+                enableTilt={false}
+                clickEffect
+                enableMagnetism={false}
+                enableBorderGlow
+              >
                 {/* Icon */}
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                   <service.icon className="w-7 h-7 text-primary" />
@@ -89,7 +117,7 @@ const ServicesSection = () => {
 
                 {/* Hover gradient */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-              </div>
+              </ParticleCard>
             </motion.div>
           ))}
         </div>
