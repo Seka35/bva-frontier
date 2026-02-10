@@ -6,7 +6,6 @@ import { Menu, X } from "lucide-react";
 const navItems = [
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
-  { label: "Case Studies", href: "#cases" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -28,8 +27,8 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? "glass-card border-b border-border/50"
-          : "bg-transparent"
+        ? "glass-card border-b border-border/50"
+        : "bg-transparent"
         }`}
     >
       <div className="container px-4 sm:px-6 lg:px-8">

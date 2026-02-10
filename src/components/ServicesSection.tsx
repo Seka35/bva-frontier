@@ -49,7 +49,7 @@ const ServicesSection = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section className="relative py-24 sm:py-32">
+    <section id="services" className="relative py-24 sm:py-32">
       <div className="container px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div

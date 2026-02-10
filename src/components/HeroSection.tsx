@@ -6,7 +6,7 @@ import LogoCarousel from "@/components/LogoCarousel";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32">
       {/* Background Effects */}
       <div className="absolute inset-0 z-0 opacity-40">
         <FloatingLines
@@ -22,10 +22,10 @@ const HeroSection = () => {
       <div className="absolute inset-0 hero-gradient z-[1] pointer-events-none" />
       <div className="absolute inset-0 bg-grid-pattern opacity-30 z-[1] pointer-events-none" />
 
-      {/* Floating orbs */}
-      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary/20 rounded-full blur-[100px] animate-float z-[1] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-[120px] animate-float animation-delay-2000 z-[1] pointer-events-none" />
-      <div className="absolute top-1/2 right-1/3 w-48 h-48 bg-primary/15 rounded-full blur-[80px] animate-float animation-delay-4000 z-[1] pointer-events-none" />
+      {/* Floating orbs - Optimized for mobile performance */}
+      <div className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-72 sm:h-72 bg-primary/20 rounded-full blur-[50px] sm:blur-[100px] animate-float z-[1] pointer-events-none will-change-transform" />
+      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-secondary/20 rounded-full blur-[60px] sm:blur-[120px] animate-float animation-delay-2000 z-[1] pointer-events-none will-change-transform" />
+      <div className="absolute top-1/2 right-1/3 w-32 h-32 sm:w-48 sm:h-48 bg-primary/15 rounded-full blur-[40px] sm:blur-[80px] animate-float animation-delay-4000 z-[1] pointer-events-none will-change-transform" />
 
       <div className="container relative z-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
@@ -34,7 +34,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8 mt-8 sm:mt-0"
           >
             <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium text-muted-foreground">

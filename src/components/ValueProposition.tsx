@@ -33,10 +33,10 @@ const ValueProposition = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section className="relative py-24 sm:py-32 overflow-hidden">
+    <section id="about" className="relative py-24 sm:py-32 overflow-hidden">
       {/* Background accent */}
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1/2 h-96 bg-primary/5 blur-[100px] rounded-full" />
-      
+
       <div className="container px-4 sm:px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left content */}
@@ -53,8 +53,8 @@ const ValueProposition = () => {
               Why Businesses Choose BVA
             </ScrollFloat>
             <p className="text-lg text-muted-foreground mb-8">
-              We combine deep technical expertise with a genuine understanding of 
-              business challenges. Our team doesn't just write code—we architect 
+              We combine deep technical expertise with a genuine understanding of
+              business challenges. Our team doesn't just write code—we architect
               solutions that drive real business outcomes.
             </p>
 
